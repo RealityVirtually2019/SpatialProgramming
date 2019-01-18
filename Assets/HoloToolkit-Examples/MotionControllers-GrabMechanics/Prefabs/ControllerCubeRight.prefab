@@ -129,4 +129,4 @@ MonoBehaviour:
   grabbableLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  pressType: 3
+  pressType: 1
