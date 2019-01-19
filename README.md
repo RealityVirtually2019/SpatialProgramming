@@ -1,6 +1,6 @@
 # SpatialProgramming
 
-Spatial programming is the beginnings of a node based progamming interface, like [Scratch](https://scratch.mit.edu/), but in mixed reality. The idea stemmed from a desire to learn programming while rapidly prototyping for mixed reality. The productivity potentials for a system like caught our imagination as much as the educational potentials.
+Spatial programming is the beginnings of a node based programming interface, like [Scratch](https://scratch.mit.edu/), but in mixed reality. The idea stemmed from a desire to learn programming while rapidly prototyping for mixed reality. The productivity potentials for a system like caught our imagination as much as the educational potentials.
 
 Some ideas for how this system can be built upon include:
 * multi-user collaboration
