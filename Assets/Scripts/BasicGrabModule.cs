@@ -15,7 +15,7 @@ public class BasicGrabModule : BaseGrabbable  {
     protected override void Update()
     {
         base.Update();
-        transform.localScale = size;
+     //   transform.localScale = size *2;
     }
 
     protected override void StartGrab(BaseGrabber grabber)

@@ -36,23 +36,65 @@ public class CanvasGrid : MonoBehaviour {
         {
             directions.Add(other.GetComponent<BaseNode>().WorldDirections);
             node.InCanvas = true;
+
+            node.getpoint();
+            Vector3 vec = node.vec;
+
+            StartCoroutine(GetWhenLoose(vec, node,other.gameObject));
         }
-        else
+        else if(other.CompareTag("dirvalue"))
         {
-            dirValue.Add(other.GetComponent<BaseNode>().magnitude);
+            dirValue.Add(other.GetComponent<BaseNode>().WorldMoveValue);
+            node.InCanvas = true;
+
+            node.getpoint();
+            Vector3 vec = node.vec;
+
+            StartCoroutine(GetWhenLoose(vec, node,other.gameObject));
         }
+
+
+    //    print("hitting the wall");
+
+    }
+
+    IEnumerator GetWhenLoose(Vector3 point, BaseNode node, GameObject obj
+        )
+    {
+        while(node.transform.parent!=null)
+        {
+            yield return new WaitForSeconds(.1f);
+        }
+
+        float dis = Vector3.Distance(node.transform.position, point);
+
+        while (dis>.1f)
+        {
+            node.transform.position = Vector3.MoveTowards(node.transform.position, point, Time.deltaTime);
+            dis = Vector3.Distance(node.transform.position, point);
+        }
+        obj.GetComponent<BoxCollider>().enabled = false;
+
     }
 
     public void StartAvatar()
     {
+        StartCoroutine(MoveAvatar());
+    }
+
+    IEnumerator MoveAvatar()
+    {
         foreach (int element in dirValue)
         {
-            for (int i =1;i<=dirValue.Count;i++)
+            for (int i = 0; i < dirValue[i]; i++)
             {
-                ProgAvatar.transform.Translate(AvatarPusher(directions[element]));
+                ProgAvatar.transform.Translate(AvatarPusher(directions[i]));
+                yield return new WaitForSeconds(1f);
             }
         }
+
     }
+
 
     IEnumerator WhereAvatar()
 
@@ -61,7 +103,7 @@ public class CanvasGrid : MonoBehaviour {
         if(!AvatarDestinationChecker.instant.HaveAvatar)
         {
             yield return new WaitForSeconds(2f);
-            ProgAvatar.transform.position = AvatarStartPos;
+         //   ProgAvatar.transform.position = AvatarStartPos;
         }
         else
         {
@@ -72,6 +114,9 @@ public class CanvasGrid : MonoBehaviour {
 
     public Vector3 AvatarPusher( DIR gowhere)
     {
+        // button img is from https://www.freeiconspng.com/uploads/play-button-icon-png-2.png
+
+
         Vector3 vec = new Vector3();
 
         switch(gowhere)
@@ -83,7 +128,7 @@ public class CanvasGrid : MonoBehaviour {
                 vec = Vector3.right;
                 break;
             case DIR.down:
-                vec = -Vector3.up;
+                vec = -Vector3.forward;
                 break;
 
             case DIR.left:
@@ -91,7 +136,7 @@ public class CanvasGrid : MonoBehaviour {
                 break;
 
         }
-
+       
         return vec;
     }
 }

@@ -67,7 +67,7 @@ namespace HoloToolkit.Unity.InputModule.Examples.Grabbables
         /// <param name="other"></param>
         protected virtual void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Entered trigger with " + other.name);
+        //    Debug.Log("Entered trigger with " + other.name);
             if (((1 << other.gameObject.layer) & grabbableLayers.value) == 0)
             {
                 return;
@@ -91,7 +91,7 @@ namespace HoloToolkit.Unity.InputModule.Examples.Grabbables
 
         protected virtual void OnTriggerExit(Collider other)
         {
-            Debug.Log("Exited trigger with " + other.name);
+         //   Debug.Log("Exited trigger with " + other.name);
             if (((1 << other.gameObject.layer) & grabbableLayers.value) == 0)
             {
                 return;
@@ -108,7 +108,7 @@ namespace HoloToolkit.Unity.InputModule.Examples.Grabbables
                 return;
             }
 
-            Debug.Log("Removing contact");
+          //  Debug.Log("Removing contact");
 
             RemoveContact(bg);
         }

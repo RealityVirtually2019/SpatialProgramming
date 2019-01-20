@@ -171,12 +171,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83dfd80b1c3c9e9468e974b81e604207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  element: 6
+  handedness: 1
+  SetChildrenInactiveWhenDetached: 1
+  PositionOffset: {x: 0, y: 0, z: 0}
+  RotationOffset: {x: 0, y: 0, z: 0}
+  ScaleOffset: {x: 1, y: 1, z: 1}
+  SetScaleOnAttach: 0
   directions:
-  - {fileID: 1171145026569540, guid: 262e771f2c7f651458e4f170d765d15a, type: 2}
-  - {fileID: 1171145026569540, guid: 262e771f2c7f651458e4f170d765d15a, type: 2}
-  - {fileID: 1171145026569540, guid: 262e771f2c7f651458e4f170d765d15a, type: 2}
-  - {fileID: 1171145026569540, guid: 262e771f2c7f651458e4f170d765d15a, type: 2}
+  - {fileID: 1332036546647430, guid: b8180a0a6cc59da48910131a35743b2c, type: 2}
+  - {fileID: 1959073224293102, guid: 0343ae2dc5e9daa4faed7f5eb3bf0818, type: 2}
+  - {fileID: 1578150440738060, guid: 004e2e410542c8348921d8ff2885253c, type: 2}
+  - {fileID: 1584873597974290, guid: d2a2f6ccf4b8cb64fa11abd9ab648f34, type: 2}
   chosenObject: 0
   posValue: 0.8
   createUI: {fileID: 0}
-  CreatePoint: {fileID: 4318072494888250}
+  createLoc: {fileID: 4318072494888250}

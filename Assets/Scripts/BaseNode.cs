@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum DIR { up, right, down, left };
+public enum DIR { up, right, down, left ,spring};
 public class BaseNode : MonoBehaviour {
 
-    public string commandType;
-    public bool isConnectedLeft;
-    public bool isConnectedRight;
+  //  public string commandType;
+ //   public bool isConnectedLeft;
+  //  public bool isConnectedRight;
   
     public DIR WorldDirections;
-    public int magnitude;
+    public int WorldMoveValue;
     public bool InCanvas = false;
+    public Vector3 vec;
 
     public void SetDir (DIR newDirection)
     {
@@ -19,8 +20,13 @@ public class BaseNode : MonoBehaviour {
         
     }
 
+    public void getpoint()
+    {
+        vec = transform.position;
+    }
+
     public void SetValue (int newValue)
     {
-        newValue = magnitude;
+        newValue = WorldMoveValue;
     }
 }

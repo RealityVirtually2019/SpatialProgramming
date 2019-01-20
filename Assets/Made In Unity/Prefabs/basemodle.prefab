@@ -25,9 +25,10 @@ GameObject:
   - component: {fileID: 54144135200564822}
   - component: {fileID: 114531738257869334}
   - component: {fileID: 114931774979027948}
+  - component: {fileID: 114000262169439242}
   m_Layer: 0
   m_Name: basemodle
-  m_TagString: Untagged
+  m_TagString: directions
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,6 +114,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114000262169439242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1171145026569540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991c87f29d00e2e4a923a6b55da0f6dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commandType: 
+  isConnectedLeft: 0
+  isConnectedRight: 0
+  WorldDirections: 0
+  WorldMoveValue: 0
+  InCanvas: 0
 --- !u!114 &114531738257869334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabSpot: {fileID: 0}
   grabStyle: 0
+  size: {x: 0, y: 0, z: 0}
 --- !u!114 &114931774979027948
 MonoBehaviour:
   m_ObjectHideFlags: 1

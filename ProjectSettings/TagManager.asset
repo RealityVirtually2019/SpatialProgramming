@@ -6,6 +6,7 @@ TagManager:
   tags:
   - hands
   - directions
+  - dirvalue
   layers:
   - Default
   - TransparentFX
