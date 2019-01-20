@@ -11,8 +11,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: SpatialProgramming_test02
+  companyName: Team80
+  productName: SpatialProgramming
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -565,11 +565,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: SpatialProgramming_test02
   metroPackageVersion: 
-  metroCertificatePath: 
+  metroCertificatePath: D:\Projects\GameDev\SpatialProgramming\Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: Team80
+  metroCertificateIssuer: Team80
+  metroCertificateNotAfter: 00964fbbd0cfd501
   metroApplicationDescription: SpatialProgramming_test02
   wsaImages: {}
   metroTileShortName: 
