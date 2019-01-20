@@ -13,22 +13,14 @@ public class BaseNode : MonoBehaviour {
     public int magnitude;
     public bool InCanvas = false;
 
-    void ConnectedNode()
+    public void SetDir (DIR newDirection)
     {
-        if (true)
-        {
-
-        }
+        WorldDirections = newDirection;
+        
     }
 
-    
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void SetValue (int newValue)
+    {
+        newValue = magnitude;
+    }
 }
