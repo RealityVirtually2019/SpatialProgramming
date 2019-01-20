@@ -6,10 +6,13 @@ using HoloToolkit.Unity.InputModule.Examples.Grabbables;
 public class BasicGrabModule : BaseGrabbable  {
 
     public Vector3 size;
+    public AudioClip clip;
+    public AudioSource asource;
 
     public void Awake()
     {
         size = transform.localScale;
+        asource = GetComponent<AudioSource>();
     }
 
     protected override void Update()
@@ -23,6 +26,7 @@ public class BasicGrabModule : BaseGrabbable  {
         base.StartGrab(grabber);
         transform.SetParent(GrabberPrimary.transform);
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        asource.PlayOneShot(clip);
     }
 
     protected override void EndGrab()

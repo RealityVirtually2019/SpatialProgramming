@@ -10,7 +10,7 @@ public class CanvasGrid : MonoBehaviour {
     public List<int> dirValue = new List<int>();
     public GameObject ProgAvatar;
     public Vector3 AvatarStartPos;
-
+    public PlayButton playbutton;
 
     private void Awake()
     {
@@ -49,9 +49,11 @@ public class CanvasGrid : MonoBehaviour {
 
             node.getpoint();
             Vector3 vec = node.vec;
-
+            
             StartCoroutine(GetWhenLoose(vec, node,other.gameObject));
         }
+
+       // other.transform.rotation = transform.rotation;
 
 
     //    print("hitting the wall");
@@ -61,7 +63,9 @@ public class CanvasGrid : MonoBehaviour {
     IEnumerator GetWhenLoose(Vector3 point, BaseNode node, GameObject obj
         )
     {
-        while(node.transform.parent!=null)
+        obj.GetComponent<Collider>().enabled = false;
+
+        while (node.transform.parent!=null)
         {
             yield return new WaitForSeconds(.1f);
         }
@@ -73,26 +77,44 @@ public class CanvasGrid : MonoBehaviour {
             node.transform.position = Vector3.MoveTowards(node.transform.position, point, Time.deltaTime);
             dis = Vector3.Distance(node.transform.position, point);
         }
-        obj.GetComponent<BoxCollider>().enabled = false;
+        
 
     }
 
     public void StartAvatar()
     {
+       
+
+        if(directions.Count<dirValue.Count)
+        {
+            while(directions.Count<dirValue.Count)
+            {
+                directions.Add(directions[0]);
+            }
+        }else if(dirValue.Count<directions.Count)
+        {
+            while(dirValue.Count < directions.Count)
+            {
+                int i = Random.Range(0, 9);
+                dirValue.Add(i);
+            }
+        }
+
         StartCoroutine(MoveAvatar());
     }
 
     IEnumerator MoveAvatar()
     {
-        foreach (int element in dirValue)
+        for(int j=0;j<dirValue.Count;j++)
         {
-            for (int i = 0; i < dirValue[i]; i++)
+            for (int i = 0; i < dirValue[j]; i++)
             {
-                ProgAvatar.transform.Translate(AvatarPusher(directions[i]));
-                yield return new WaitForSeconds(1f);
+                ProgAvatar.transform.Translate(AvatarPusher(directions[j]));
+                yield return new WaitForSeconds(.2f);
             }
         }
 
+        StartCoroutine(WhereAvatar());
     }
 
 
@@ -103,7 +125,8 @@ public class CanvasGrid : MonoBehaviour {
         if(!AvatarDestinationChecker.instant.HaveAvatar)
         {
             yield return new WaitForSeconds(2f);
-         //   ProgAvatar.transform.position = AvatarStartPos;
+            ProgAvatar.transform.position = AvatarStartPos;
+            playbutton.playing = false;
         }
         else
         {
@@ -119,20 +142,25 @@ public class CanvasGrid : MonoBehaviour {
 
         Vector3 vec = new Vector3();
 
+        Vector3 vecForward = new Vector3(0, 0, .5f);
+        Vector3 vecBack = new Vector3(0, 0, -.5f);
+        Vector3 vecLeft = new Vector3(-.5f, 0, 0);
+        Vector3 vecRight = new Vector3(.5f, 0, 0);
+
         switch(gowhere)
         {
             case DIR.up:
-                vec = Vector3.forward;
+                vec = vecForward;
                 break;
             case DIR.right:
-                vec = Vector3.right;
+                vec = vecRight;
                 break;
             case DIR.down:
-                vec = -Vector3.forward;
+                vec = vecBack;
                 break;
 
             case DIR.left:
-                vec = -Vector3.right;
+                vec = vecLeft;
                 break;
 
         }
