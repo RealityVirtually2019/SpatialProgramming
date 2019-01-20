@@ -11,46 +11,71 @@ public class ControllerInputDirection : MonoBehaviour {
     public List<GameObject> directions = new List<GameObject>();
     public int chosenObject;
     public float posValue;
+    public GameObject createUI;
+
+    private void Start()
+    {
+        InteractionManager.InteractionSourcePressed += (evt) =>
+        {
+            if (evt.pressType != InteractionSourcePressType.Touchpad) return;
+            Vector3 position;
+            evt.state.sourcePose.TryGetPosition(out position);
+            Quaternion rotation;
+            evt.state.sourcePose.TryGetRotation(out rotation);
+            Instantiate(directions[TouchLoc(evt)], position, rotation);
+        };
+    }
 
     public void Update()
     {
-        var interactionSourceStates = InteractionManager.GetCurrentReading();
-        foreach (var interactionSourceState in interactionSourceStates)
-        {
-            if(interactionSourceState.touchpadPressed)
-            {
-                if (interactionSourceState.touchpadPosition.x < (-1 * posValue))
-                {
-                    //pressing left;
-                    chosenObject = 4;
-                    CreateDirection(chosenObject, interactionSourceState);
-                }
-                else if (interactionSourceState.touchpadPosition.x > (posValue))
-                {
-                    //pressing right;
-                    chosenObject = 2;
-                }
-                else if (interactionSourceState.touchpadPosition.y > ( posValue))
-                {
-                    //pressing up
-                    chosenObject = 1;
-                }
-                else if(interactionSourceState.touchpadPosition.y<(-1*posValue))
-                {
-                    //pressing down
-                    chosenObject = 3;
-                }
-            }
+       // if (interactionSourceState.touchpadTouched)
+      // {
 
+            //  createUI.SetActive(true);
+       // }
+      //  else
+      //  {
+
+            //   createUI.SetActive(false);
+     //   }
+
+    }
+
+
+
+    public int TouchLoc(interac)
+    {
+        var source = InteractionManager.GetCurrentReading();
+        Input.
+        
+
+        if (interactionSourceState.touchpadPosition.x < (-1 * posValue))
+        {
+            //pressing left;
+            chosenObject = 3;
+            CreateDirection(chosenObject, interactionSourceState);
+        }
+        else if (interactionSourceState.touchpadPosition.x > (posValue))
+        {
+            //pressing right;
+            chosenObject = 1;
+            CreateDirection(chosenObject, interactionSourceState);
+        }
+        else if (interactionSourceState.touchpadPosition.y > (posValue))
+        {
+            //pressing up
+            chosenObject = 0;
+            CreateDirection(chosenObject, interactionSourceState);
+        }
+        else if (interactionSourceState.touchpadPosition.y < (-1 * posValue))
+        {
+            //pressing down
+            chosenObject = 2;
+            CreateDirection(chosenObject, interactionSourceState);
         }
 
-    }
-
-    public void CreateDirection(int dir, InteractionSourceState sourceState)
-    {
-        GameObject obj = Instantiate(directions[dir],InputTracking.GetLocalPosition(XRNode.LeftHand),InputTracking.GetLocalRotation(XRNode.LeftHand));
+        return chosenObject;
 
     }
-
 
 }

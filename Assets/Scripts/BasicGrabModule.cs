@@ -5,6 +5,19 @@ using HoloToolkit.Unity.InputModule.Examples.Grabbables;
 
 public class BasicGrabModule : BaseGrabbable  {
 
+    public Vector3 size;
+
+    public void Awake()
+    {
+        size = transform.localScale;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        transform.localScale = size;
+    }
+
     protected override void StartGrab(BaseGrabber grabber)
     {
         base.StartGrab(grabber);
